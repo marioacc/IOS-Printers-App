@@ -7,9 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreBluetooth/CoreBluetooth.h>
+@interface ViewController : UIViewController<CBCentralManagerDelegate, UIAlertViewDelegate> {
+    CBCentralManager *myCentralManager;
+    __weak IBOutlet UILabel *testText;
+    __weak IBOutlet UILabel *peripherals;
+    NSArray *services;
+    __weak IBOutlet UITextField *sendText;
+    
 
-@interface ViewController : UIViewController
+}
 
+@property (strong) CBPeripheral *connectingPeripheral;
+- (IBAction)show:(id)sender;
+- (IBAction)send:(id)sender;
 
 @end
 
