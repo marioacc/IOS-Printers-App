@@ -14,6 +14,7 @@
 		BBB036841A0C02D8000BB3FD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBB036831A0C02D8000BB3FD /* Images.xcassets */; };
 		BBB036871A0C02D8000BB3FD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBB036851A0C02D8000BB3FD /* LaunchScreen.xib */; };
 		BBB036931A0C02D9000BB3FD /* BluetoothTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BBB036921A0C02D9000BB3FD /* BluetoothTestTests.m */; };
+		BBCF73BC1A15413700BA07EA /* PeripheralVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BBCF73BB1A15413700BA07EA /* PeripheralVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,8 @@
 		BBB0368C1A0C02D9000BB3FD /* BluetoothTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BluetoothTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBB036911A0C02D9000BB3FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BBB036921A0C02D9000BB3FD /* BluetoothTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BluetoothTestTests.m; sourceTree = "<group>"; };
+		BBCF73BA1A15413700BA07EA /* PeripheralVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PeripheralVC.h; path = ../PeripheralVC.h; sourceTree = "<group>"; };
+		BBCF73BB1A15413700BA07EA /* PeripheralVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PeripheralVC.m; path = ../PeripheralVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +84,8 @@
 		BBB036751A0C02D8000BB3FD /* BluetoothTest */ = {
 			isa = PBXGroup;
 			children = (
+				BBCF73BA1A15413700BA07EA /* PeripheralVC.h */,
+				BBCF73BB1A15413700BA07EA /* PeripheralVC.m */,
 				BBB0367A1A0C02D8000BB3FD /* AppDelegate.h */,
 				BBB0367B1A0C02D8000BB3FD /* AppDelegate.m */,
 				BBB0367D1A0C02D8000BB3FD /* ViewController.h */,
@@ -221,6 +226,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBCF73BC1A15413700BA07EA /* PeripheralVC.m in Sources */,
 				BBB0367F1A0C02D8000BB3FD /* ViewController.m in Sources */,
 				BBB0367C1A0C02D8000BB3FD /* AppDelegate.m in Sources */,
 				BBB036791A0C02D8000BB3FD /* main.m in Sources */,

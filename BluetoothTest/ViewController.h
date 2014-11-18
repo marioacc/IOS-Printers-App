@@ -8,19 +8,22 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreBluetooth/CoreBluetooth.h>
-@interface ViewController : UIViewController<CBCentralManagerDelegate, UIAlertViewDelegate> {
+@interface ViewController : UIViewController<CBCentralManagerDelegate, UITableViewDataSource, UITableViewDelegate> {
     CBCentralManager *myCentralManager;
     __weak IBOutlet UILabel *testText;
-    __weak IBOutlet UILabel *peripherals;
+    __weak IBOutlet UITableView *tableView;
     NSArray *services;
-    __weak IBOutlet UITextField *sendText;
-    
+    NSMutableArray *devices;
+    NSArray *characteristics;
 
 }
 
-@property (strong) CBPeripheral *connectingPeripheral;
+@property (strong, nonatomic) CBPeripheral *connectingPeripheral;
+@property (strong, nonatomic) NSString *discoveredService;
+@property (strong, nonatomic) NSString *discoveredCharacteristics;
+@property (strong, nonatomic) CBCharacteristic *defaultCharacteristic;
 - (IBAction)show:(id)sender;
-- (IBAction)send:(id)sender;
+
 
 @end
 
