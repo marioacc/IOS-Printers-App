@@ -17,9 +17,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    devices = [NSMutableArray arrayWithObjects:@"Test", nil];
+    devices = [NSMutableArray arrayWithObjects: nil];
+    /*Cacracteristicas para el modulo bluetooth*/
     services = [NSArray arrayWithObjects:[CBUUID UUIDWithString:@"8b8f8d60-6b64-11e4-a552-0002a5d5c51b"], nil];
-    characteristics = [NSArray arrayWithObjects:[CBUUID UUIDWithString:@"c77fca60-6b64-11e4-a9b1-0002a5d5c51b"], nil];
+    characteristics = [NSArray arrayWithObjects:[CBUUID UUIDWithString:@"c77fca60-6b64-11e4-a9b1-0002a5d5c51b"],[CBUUID UUIDWithString:@"32742960-6b65-11e4-a8ca-0002a5d5c51b"], nil];
+    
+    
+    /*Caracteristicas de prueba con el IPAD*/
+//    services = [NSArray arrayWithObjects:[CBUUID UUIDWithString:@"1813"], nil];
+//    characteristics = [NSArray arrayWithObjects:[CBUUID UUIDWithString:@"2A31"],[CBUUID UUIDWithString:@"CABE"] , nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -58,6 +64,7 @@
 }
 -(void) centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral {
     NSLog(@"Connected to %@", peripheral.name);
+    testText.text = [NSString stringWithFormat:@"Connected"];
     [myCentralManager stopScan];
     NSLog(@"Stopped scan");
     [peripheral discoverServices:services];
@@ -70,14 +77,16 @@
         [peripheral discoverCharacteristics:characteristics forService:service];
     }
 }
--(void) peripheral:(CBPeripheral *) peripheral didModifyServices:(NSArray *)invalidatedServices {
-    
-}
+
 
 -(void) peripheral:(CBPeripheral *) peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error {
     for(CBCharacteristic *characteristic in service.characteristics) {
         NSLog(@"Discovered characteristic %@", characteristic.UUID);
-        self.defaultCharacteristic = characteristic;
+        if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"c77fca60-6b64-11e4-a9b1-0002a5d5c51b"]]){
+            self.beginSessionCharacteristic=characteristic;
+        } else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"32742960-6b65-11e4-a8ca-0002a5d5c51b"]]){
+            self.pricesCharacteristic=characteristic;
+        }
         self.discoveredCharacteristics = [NSString stringWithFormat:@"%@",characteristic.value];
         [peripheral readValueForCharacteristic:characteristic];
     }
@@ -86,7 +95,12 @@
     NSString *value = [NSString stringWithFormat:@"%@", characteristic.value];
     value = [value stringByReplacingOccurrencesOfString:@"<" withString:@""];
     value = [value stringByReplacingOccurrencesOfString:@">" withString:@""];
-    
+    if ([characteristic isEqual:self.beginSessionCharacteristic]) {
+        self.beginSessionValue=value;
+    }else if ([characteristic isEqual:self.pricesCharacteristic]){
+        self.pricesValue=value;
+    }
+     NSLog(@" Valor de la caracteristica:%@", value);
 }
 
 -(NSInteger) numberOfSectionsInTableView:(UITableView *)tableView {
@@ -105,6 +119,17 @@
     cell.textLabel.text = [devices objectAtIndex:indexPath.row];
     return cell;
 }
+- (void)peripheral:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(CBCharacteristic *)characteristic
+             error:(NSError *)error {
+       if (error) {
+        NSLog(@"Error writing characteristic value: %@",
+              [error localizedDescription]);
+    }
+    else {
+        NSLog(@"Success!");
+    }
+}
+
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"infovc"])
     {
@@ -112,13 +137,15 @@
         PeripheralVC *vc = [segue destinationViewController];
         
         // Pass any objects to the view controller here, like...
-
-        vc.infoPeripheral = self.connectingPeripheral.name;
-        NSLog(@"%@", self.discoveredService);
-        vc.infoServices = self.discoveredService;
-        vc.infoCharacteristics = self.discoveredCharacteristics;
+        
+        vc.pricesCharacteristic=self.pricesCharacteristic;
+        vc.beginSessionCharacteristic=self.beginSessionCharacteristic;
+        
+        vc.pricesValue=self.pricesValue;
+        vc.beginSessionValue=self.beginSessionValue;
+        
         vc.peripheral = self.connectingPeripheral;
-        vc.characteristic = self.defaultCharacteristic;
+        
     }
 }
 @end

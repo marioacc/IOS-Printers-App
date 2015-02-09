@@ -10,18 +10,27 @@
 
 @interface PeripheralVC : ViewController {
     
-    __weak IBOutlet UILabel *textPeripheral;
-    __weak IBOutlet UILabel *textservice;
-    __weak IBOutlet UILabel *textCharacteristics;
+ 
     __weak IBOutlet UITextField *sendText;
+    __weak IBOutlet UILabel *pricesLabel;
+    __weak IBOutlet UILabel *peripheralNameLabel;
     CBPeripheral *newPeripheral;
     CBCharacteristic *newCharacteristic;
-
 }
 - (IBAction)send:(id)sender;
-@property (strong, nonatomic) NSString *infoPeripheral;
-@property (strong, nonatomic) NSString *infoServices;
-@property (strong, nonatomic) NSString *infoCharacteristics;
+
+
+
+//Peripheral
 @property (strong, nonatomic) CBPeripheral *peripheral;
+
+//Values
+@property (strong, nonatomic) NSString *pricesValue;
+@property (strong, nonatomic) NSString *beginSessionValue;
+
+//Characteristics
 @property (strong, nonatomic) CBCharacteristic *characteristic;
+@property (strong, nonatomic) CBCharacteristic *pricesCharacteristic;
+@property (strong, nonatomic) CBCharacteristic *beginSessionCharacteristic;
+
 @end

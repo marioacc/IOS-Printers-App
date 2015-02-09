@@ -18,10 +18,20 @@
 
 }
 
+//Peripheral
 @property (strong, nonatomic) CBPeripheral *connectingPeripheral;
+
+//Services
 @property (strong, nonatomic) NSString *discoveredService;
 @property (strong, nonatomic) NSString *discoveredCharacteristics;
-@property (strong, nonatomic) CBCharacteristic *defaultCharacteristic;
+
+//Charactersitics
+@property (strong, nonatomic) CBCharacteristic *pricesCharacteristic;
+@property (strong, nonatomic) CBCharacteristic *beginSessionCharacteristic;
+
+//Values
+@property (strong, nonatomic) NSString *pricesValue;
+@property (strong, nonatomic) NSString *beginSessionValue;
 - (IBAction)show:(id)sender;
 
 
