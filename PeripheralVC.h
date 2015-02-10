@@ -17,7 +17,7 @@
     CBPeripheral *newPeripheral;
     CBCharacteristic *newCharacteristic;
 }
-- (IBAction)send:(id)sender;
+
 
 
 

@@ -15,11 +15,13 @@
     NSArray *services;
     NSMutableArray *devices;
     NSArray *characteristics;
+    
+    NSMutableDictionary *vendingMachines;
 
 }
 
 //Peripheral
-@property (strong, nonatomic) CBPeripheral *connectingPeripheral;
+@property (strong, nonatomic) CBPeripheral *peripheral;
 
 //Services
 @property (strong, nonatomic) NSString *discoveredService;
@@ -34,6 +36,8 @@
 @property (strong, nonatomic) NSString *beginSessionValue;
 - (IBAction)show:(id)sender;
 
+//Button to send cash to vending machine
+- (IBAction)sendCash:(id)sender;
 
 @end
 

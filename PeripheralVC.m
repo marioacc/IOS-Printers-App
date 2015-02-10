@@ -18,7 +18,7 @@
     // Do any additional setup after loading the view.
 
     peripheralNameLabel.text = self.peripheral.name;
-    pricesLabel.text = [self convertHexToIntString:self.pricesValue];
+    //pricesLabel.text = [self convertHexToIntString:self.pricesValue];
     newPeripheral = self.peripheral;
     newCharacteristic = self.characteristic;
 }
@@ -52,18 +52,6 @@
     [self.view endEditing:YES];
 }
 
--(NSString *) convertHexToIntString:(NSString *) hexString{
-    unsigned int outVal;
-    NSScanner* scanner = [NSScanner scannerWithString:hexString];
-    [scanner scanHexInt:&outVal];
-    return [NSString stringWithFormat:@"%u",outVal];
-}
 
--(NSString *) convertIntToHexString:(NSString *) hexString{
-    unsigned int outVal;
-    NSScanner* scanner = [NSScanner scannerWithString:hexString];
-    [scanner scanHexInt:&outVal];
-    return [NSString stringWithFormat:@"%u",outVal];
-}
 
 @end
