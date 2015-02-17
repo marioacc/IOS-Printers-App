@@ -27,12 +27,6 @@
                                     <action selector="show:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="ubE-vK-s8S"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Testing" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vQd-UR-tZG">
-                                <rect key="frame" x="4" y="54" width="313" height="27"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="200" placeholderIntrinsicHeight="200" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="rIg-YA-GEh">
                                 <rect key="frame" x="0.0" y="89" width="318" height="224"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -50,6 +44,12 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Testing" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vQd-UR-tZG">
+                                <rect key="frame" x="4" y="54" width="313" height="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dCf-dh-OoB">
                                 <rect key="frame" x="16" y="380" width="76" height="30"/>
                                 <constraints>
@@ -87,6 +87,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="sendCashTextLabel" destination="iLL-4b-CWU" id="JCZ-eV-gP2"/>
                         <outlet property="tableView" destination="rIg-YA-GEh" id="DaB-eK-gZY"/>
                         <outlet property="testText" destination="vQd-UR-tZG" id="QZK-62-NGR"/>
                         <segue destination="M2i-YN-LCH" kind="show" identifier="infovc" id="3w5-UA-UXd"/>

@@ -37,17 +37,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)show:(id)sender {
-    myCentralManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil options:nil];
-}
-
-- (IBAction)sendCash:(id)sender {
-    //NSString *str = sendText.text;
-    NSString *str= @"0x0000001";
-    NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
-    
-    [self.peripheral writeValue:data forCharacteristic:self.beginSessionCharacteristic type:CBCharacteristicWriteWithResponse];
-}
 
 
 
@@ -73,6 +62,7 @@
         }
     }
 }
+
 -(void) centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral {
     NSLog(@"Connected to %@", peripheral.name);
     testText.text = [NSString stringWithFormat:@"Conectado a la Vending 1"];
@@ -102,6 +92,7 @@
         [peripheral readValueForCharacteristic:characteristic];
     }
 }
+
 -(void) peripheral:(CBPeripheral *) peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
     NSString *value = [NSString stringWithFormat:@"%@", characteristic.value];
     value = [value stringByReplacingOccurrencesOfString:@"<" withString:@""];
@@ -117,9 +108,11 @@
 -(NSInteger) numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
+
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [devices count];
 }
+
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell=[tableView cellForRowAtIndexPath:indexPath];
     NSString *peripheralName=cell.textLabel.text;
@@ -131,11 +124,13 @@
    
         
 }
+
 -(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [[UITableViewCell alloc]init];
     cell.textLabel.text = [devices objectAtIndex:indexPath.row];
     return cell;
 }
+
 - (void)peripheral:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(CBCharacteristic *)characteristic
              error:(NSError *)error {
        if (error) {
@@ -161,17 +156,35 @@
     [self.view endEditing:YES];
 }
 
--(NSString *) convertHexToIntString:(NSString *) hexString{
+-(NSString *) convertHexToDecimalString:(NSString *) hexString{
     unsigned int outVal;
     NSScanner* scanner = [NSScanner scannerWithString:hexString];
     [scanner scanHexInt:&outVal];
     return [NSString stringWithFormat:@"%u",outVal];
 }
 
--(NSString *) convertIntToHexString:(NSString *) hexString{
-    unsigned int outVal;
-    NSScanner* scanner = [NSScanner scannerWithString:hexString];
-    [scanner scanHexInt:&outVal];
-    return [NSString stringWithFormat:@"%u",outVal];
+-(NSString *) convertDecimalToHexString:(NSString *)decimalString{
+    NSString *hexString = [NSString stringWithFormat:@"0x%lX",
+                     (unsigned long)[decimalString integerValue]];
+    return hexString;
+    
+}
+
+//Buttons methods
+- (IBAction)show:(id)sender {
+    myCentralManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil options:nil];
+}
+
+
+- (IBAction)sendCash:(id)sender {
+//    //NSString *str = sendText.text;
+//    NSString *str= @"0x0000001";
+//    NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
+//    
+//    [self.peripheral writeValue:data forCharacteristic:self.beginSessionCharacteristic type:CBCharacteristicWriteWithResponse];
+    NSString *moneyString=sendCashTextLabel.text;
+    moneyString=[self convertDecimalToHexString:moneyString];
+    moneyString=[self convertHexToDecimalString: moneyString];
+    testText.text=moneyString;
 }
 @end

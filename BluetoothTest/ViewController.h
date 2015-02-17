@@ -17,6 +17,9 @@
     NSArray *characteristics;
     
     NSMutableDictionary *vendingMachines;
+    __weak IBOutlet UITextField *sendCashTextLabel;
+    
+
 
 }
 
@@ -38,6 +41,20 @@
 
 //Button to send cash to vending machine
 - (IBAction)sendCash:(id)sender;
+
+/*!
+ * @discussion Converts an hexadecimal NSString to decimal NSString
+ * @param String of hexadecimal characters
+ * @return String of decimal characters
+ */
+-(NSString *) convertHexToDecimalString:(NSString *) hexString;
+
+/*!
+ * @discussion Converts a decimal NSString to hexadecimal  NSString
+ * @param String of decimal characters
+ * @return String of hex characters
+ */
+-(NSString *) convertDecimalToHexString:(NSString *) decimalString;
 
 @end
 
