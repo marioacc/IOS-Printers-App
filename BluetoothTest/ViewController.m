@@ -115,11 +115,18 @@
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell=[tableView cellForRowAtIndexPath:indexPath];
+    
     NSString *peripheralName=cell.textLabel.text;
-    if (peripheralName != self.peripheral.name ) {
+    if (peripheralName == self.peripheral.name ) {
         self.peripheral=[vendingMachines objectForKey:peripheralName];
         [myCentralManager connectPeripheral:self.peripheral options:nil];
         self.peripheral.delegate=self;
+    }
+    
+    else if (peripheralName != self.peripheral.name && self.peripheral.name != nil) {
+        CBPeripheral *newVending=[vendingMachines objectForKey:peripheralName];
+        [myCentralManager cancelPeripheralConnection:self.peripheral];
+        [myCentralManager connectPeripheral:newVending options:nil];
     }
    
         

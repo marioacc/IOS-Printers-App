@@ -39,7 +39,9 @@
 @property (strong, nonatomic) NSString *beginSessionValue;
 - (IBAction)show:(id)sender;
 
-//Button to send cash to vending machine
+/*!
+ * @discussion Send the cash to the Vending Machine and open a new View in the app
+ */
 - (IBAction)sendCash:(id)sender;
 
 /*!
@@ -55,6 +57,12 @@
  * @return String of hex characters
  */
 -(NSString *) convertDecimalToHexString:(NSString *) decimalString;
+
+/*!
+ * @discussion Method to close the keyboard on click out
+ */
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
+
 
 @end
 
