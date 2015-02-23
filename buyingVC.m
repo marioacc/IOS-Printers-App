@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 itesm. All rights reserved.
 //
 
-#import "PeripheralVC.h"
+#import "buyingVC.h"
 
-@interface PeripheralVC ()
+@interface buyingVC ()
 
 @end
 
-@implementation PeripheralVC
+@implementation buyingVC
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.

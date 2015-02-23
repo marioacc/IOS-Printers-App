@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "PeripheralVC.h"
+#import "buyingVC.h"
 @interface ViewController ()
 
 @end
@@ -150,9 +150,8 @@
 }
 
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([[segue identifier] isEqualToString:@"infovc"])
+    if ([[segue identifier] isEqualToString:@"butyingvc"])
     {
-        // Get reference to the destination view controller
         
         
     }
@@ -184,14 +183,14 @@
 
 
 - (IBAction)sendCash:(id)sender {
-//    //NSString *str = sendText.text;
-//    NSString *str= @"0x0000001";
-//    NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
-//    
-//    [self.peripheral writeValue:data forCharacteristic:self.beginSessionCharacteristic type:CBCharacteristicWriteWithResponse];
+    NSString *hexString= @"0x000000000";
     NSString *moneyString=sendCashTextLabel.text;
-    moneyString=[self convertDecimalToHexString:moneyString];
-    moneyString=[self convertHexToDecimalString: moneyString];
-    testText.text=moneyString;
+    [hexString stringByAppendingString:moneyString];
+    NSData *data = [hexString dataUsingEncoding:NSUTF8StringEncoding];
+    [self.peripheral writeValue:data forCharacteristic:self.beginSessionCharacteristic type:CBCharacteristicWriteWithResponse];
+    [self performSegueWithIdentifier:@"buyingvc" sender:self];
+    
 }
+
+
 @end

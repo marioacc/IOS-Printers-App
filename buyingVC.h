@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 
-@interface PeripheralVC : ViewController {
+@interface buyingVC : ViewController {
     
  
     __weak IBOutlet UITextField *sendText;
