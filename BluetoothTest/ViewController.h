@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreBluetooth/CoreBluetooth.h>
+#import "MBProgressHUD.h"
+#import <CocoaAsyncSocket/GCDAsyncUdpSocket.h>
+
+
+
+
+
 @interface ViewController : UIViewController<CBCentralManagerDelegate, UITableViewDataSource, UITableViewDelegate> {
     CBCentralManager *myCentralManager;
     __weak IBOutlet UILabel *testText;
@@ -15,11 +22,10 @@
     NSArray *services;
     NSMutableArray *devices;
     NSArray *characteristics;
-    
     NSMutableDictionary *vendingMachines;
-    __weak IBOutlet UITextField *sendCashTextLabel;
-    
-
+    __weak IBOutlet UITextField *sendCashTextField;
+    MBProgressHUD *HUD;
+    GCDAsyncUdpSocket *udpSocket ;
 
 }
 
@@ -33,10 +39,12 @@
 //Charactersitics
 @property (strong, nonatomic) CBCharacteristic *pricesCharacteristic;
 @property (strong, nonatomic) CBCharacteristic *beginSessionCharacteristic;
+@property (strong, nonatomic) CBCharacteristic *endSessionCharacteristic;
 
 //Values
 @property (strong, nonatomic) NSString *pricesValue;
 @property (strong, nonatomic) NSString *beginSessionValue;
+@property (strong, nonatomic) NSString *endSessionValue;
 - (IBAction)show:(id)sender;
 
 /*!
@@ -62,6 +70,8 @@
  * @discussion Method to close the keyboard on click out
  */
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
+
+
 
 
 @end

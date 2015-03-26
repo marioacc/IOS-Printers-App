@@ -33,37 +33,80 @@
     }
 }
 
--(BOOL) verifyIdentity{
-    NSString *name=nameTextField.text;
-    NSString *password=passwordTextField.text;
-    if ( [name isEqual:@""] || [password isEqual:@""] ){
-        UIAlertView *dataNotFilled = [[UIAlertView alloc] initWithTitle:@"Incorrect Name/Password "
-                                                          message:@"Please verify your data"
-                                                         delegate:nil
-                                                cancelButtonTitle:@"OK"
-                                                otherButtonTitles:nil];
-        [dataNotFilled show];
-        return NO;
-    }else if ([password isEqual:[name substringToIndex:4]]){
-        return YES;
-    }
-    return NO;
+
+-(void) runLoginSocket:(NSString *)message{
+
+    NSData *data = [
+                    [NSString stringWithFormat:message]
+                    dataUsingEncoding:NSUTF8StringEncoding
+                    ];
+    [udpSocket sendData:data toHost:@"10.32.70.126" port:4582 withTimeout:-1 tag:0];
+}
+
+- (IBAction)loginButton:(id)sender {
+    [self setupSocket];
+    [self runLoginSocket:@"getUser"];
 }
 
 
-
-
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    [self.view endEditing:YES];
-}
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     return NO;
 }
--(BOOL) shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
-    return [self verifyIdentity];
+
+/****************
+ 
+ GCDAsyncSocket RELATED METHODS
+ 
+ ****************/
+
+- (void)udpSocket:(GCDAsyncUdpSocket *)sock didSendDataWithTag:(long)tag
+{
+    NSLog(@"Message in the way");
 }
+
+- (void)udpSocket:(GCDAsyncUdpSocket *)sock didNotSendDataWithTag:(long)tag dueToError:(NSError *)error
+{
+    NSLog(@"Problem sending message %@",error);
+}
+
+- (void)udpSocket:(GCDAsyncUdpSocket *)sock didReceiveData:(NSData *)data
+      fromAddress:(NSData *)address
+withFilterContext:(id)filterContext
+{
+    NSArray *userData=[[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] componentsSeparatedByString:@";"];
+    NSString *userName=nameTextField.text;
+    NSString *userPassword=passwordTextField.text;
+    if ([nameTextField.text isEqualToString:userData[0]] && [passwordTextField.text isEqualToString:userData[1]]){
+        [self performSegueWithIdentifier:@"toVendingViewSegue" sender:self];
+    }else {
+        UIAlertView *dataNotFilled = [[UIAlertView alloc] initWithTitle:@"Incorrect Name/Password "
+                                                                message:@"Please verify your data"
+                                                               delegate:nil
+                                                      cancelButtonTitle:@"OK"
+                                                      otherButtonTitles:nil];
+        [dataNotFilled show];
+    }
+}
+
+- (void)setupSocket{
+    NSError *error = nil;
+    udpSocket = [[GCDAsyncUdpSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
+    
+    if (![udpSocket bindToPort:0 error:&error])
+    {
+        NSLog(@"Error binding: %@", error);
+        return;
+    }
+    if (![udpSocket beginReceiving:&error])
+    {
+        NSLog(@"Error receiving: %@", error);
+        return;
+    }
+    NSLog(@"UDPSocket is ready");
+}
+
+
 @end
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8330E8769AC2844A2CF1C8F4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0657751674940B8359F0549A /* libPods.a */; };
 		BBB036791A0C02D8000BB3FD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BBB036781A0C02D8000BB3FD /* main.m */; };
 		BBB0367C1A0C02D8000BB3FD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BBB0367B1A0C02D8000BB3FD /* AppDelegate.m */; };
 		BBB0367F1A0C02D8000BB3FD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBB0367E1A0C02D8000BB3FD /* ViewController.m */; };
@@ -15,6 +16,7 @@
 		BBB036871A0C02D8000BB3FD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBB036851A0C02D8000BB3FD /* LaunchScreen.xib */; };
 		BBB036931A0C02D9000BB3FD /* BluetoothTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BBB036921A0C02D9000BB3FD /* BluetoothTestTests.m */; };
 		BBCF73BC1A15413700BA07EA /* buyingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BBCF73BB1A15413700BA07EA /* buyingVC.m */; };
+		CE96B9B51AA52C8B003921F8 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = CE96B9B41AA52C8B003921F8 /* Podfile */; };
 		CEF321521A9BA8DA007119E7 /* loginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF321511A9BA8DA007119E7 /* loginVC.m */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +31,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0657751674940B8359F0549A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F0E8A8CA299C875E8ED3D25 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		93731A08209DE6A2DE54853A /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		BBB036731A0C02D8000BB3FD /* BluetoothTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BluetoothTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBB036771A0C02D8000BB3FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BBB036781A0C02D8000BB3FD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -44,6 +49,7 @@
 		BBB036921A0C02D9000BB3FD /* BluetoothTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BluetoothTestTests.m; sourceTree = "<group>"; };
 		BBCF73BA1A15413700BA07EA /* buyingVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = buyingVC.h; path = ../buyingVC.h; sourceTree = "<group>"; };
 		BBCF73BB1A15413700BA07EA /* buyingVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = buyingVC.m; path = ../buyingVC.m; sourceTree = "<group>"; };
+		CE96B9B41AA52C8B003921F8 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		CEF321501A9BA8DA007119E7 /* loginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = loginVC.h; sourceTree = "<group>"; };
 		CEF321511A9BA8DA007119E7 /* loginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = loginVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -53,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8330E8769AC2844A2CF1C8F4 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,12 +73,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		538882EA57BDAC916F0FD284 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				93731A08209DE6A2DE54853A /* Pods.debug.xcconfig */,
+				4F0E8A8CA299C875E8ED3D25 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		BBB0366A1A0C02D8000BB3FD = {
 			isa = PBXGroup;
 			children = (
+				CE96B9B41AA52C8B003921F8 /* Podfile */,
 				BBB036751A0C02D8000BB3FD /* BluetoothTest */,
 				BBB0368F1A0C02D9000BB3FD /* BluetoothTestTests */,
 				BBB036741A0C02D8000BB3FD /* Products */,
+				538882EA57BDAC916F0FD284 /* Pods */,
+				ED4907504F05C9975E5A4261 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -129,6 +148,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		ED4907504F05C9975E5A4261 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0657751674940B8359F0549A /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -136,9 +163,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BBB036961A0C02D9000BB3FD /* Build configuration list for PBXNativeTarget "BluetoothTest" */;
 			buildPhases = (
+				B8215D0B8454288D916A6CF6 /* Check Pods Manifest.lock */,
 				BBB0366F1A0C02D8000BB3FD /* Sources */,
 				BBB036701A0C02D8000BB3FD /* Frameworks */,
 				BBB036711A0C02D8000BB3FD /* Resources */,
+				2841B66E6DBFBB67C8A1C4D6 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -194,6 +223,7 @@
 			knownRegions = (
 				en,
 				Base,
+				English,
 			);
 			mainGroup = BBB0366A1A0C02D8000BB3FD;
 			productRefGroup = BBB036741A0C02D8000BB3FD /* Products */;
@@ -212,6 +242,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BBB036821A0C02D8000BB3FD /* Main.storyboard in Resources */,
+				CE96B9B51AA52C8B003921F8 /* Podfile in Resources */,
 				BBB036871A0C02D8000BB3FD /* LaunchScreen.xib in Resources */,
 				BBB036841A0C02D8000BB3FD /* Images.xcassets in Resources */,
 			);
@@ -225,6 +256,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2841B66E6DBFBB67C8A1C4D6 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B8215D0B8454288D916A6CF6 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BBB0366F1A0C02D8000BB3FD /* Sources */ = {
@@ -358,6 +422,7 @@
 		};
 		BBB036971A0C02D9000BB3FD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 93731A08209DE6A2DE54853A /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -374,6 +439,7 @@
 		};
 		BBB036981A0C02D9000BB3FD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4F0E8A8CA299C875E8ED3D25 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;

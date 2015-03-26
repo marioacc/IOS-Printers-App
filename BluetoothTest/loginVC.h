@@ -7,18 +7,27 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CocoaAsyncSocket/GCDAsyncUdpSocket.h>
 
 @interface loginVC : UIViewController<UITextInputDelegate>{
 
     __weak IBOutlet UITextField *nameTextField;
 
     __weak IBOutlet UITextField *passwordTextField;
+    GCDAsyncUdpSocket *udpSocket ;
+    BOOL *shouldPerformSegue;
     
 
 }
 /*!
  * @discussion This method verify the identity of the user.
  */
+-(void) verifyIdentity;
 
--(BOOL) verifyIdentity;
+
+/*!
+ * @discussion This methods creates a socket and send a message to the server
+ */
+-(void) runLoginSocket: (NSString *) message;
+- (IBAction)loginButton:(id)sender;
 @end
