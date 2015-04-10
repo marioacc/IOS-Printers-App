@@ -17,15 +17,19 @@
 
 @interface ViewController : UIViewController<CBCentralManagerDelegate, UITableViewDataSource, UITableViewDelegate> {
     CBCentralManager *myCentralManager;
-    __weak IBOutlet UILabel *testText;
+
+    __weak IBOutlet UIButton *sendCashButton;
+    __weak IBOutlet UILabel *statusLabel;
     __weak IBOutlet UITableView *tableView;
     NSArray *services;
     NSMutableArray *devices;
     NSArray *characteristics;
     NSMutableDictionary *vendingMachines;
     __weak IBOutlet UITextField *sendCashTextField;
+    __weak IBOutlet UILabel *cashTextLabel;
     MBProgressHUD *HUD;
     GCDAsyncUdpSocket *udpSocket ;
+    __weak IBOutlet UIButton *statusButton;
 
 }
 
@@ -71,8 +75,19 @@
  */
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
 
+/*!
+ * @discussion Method that resets everything related to bluetooth and related propertys
+ */
+-(void)resetAppStatus;
 
+/*!
+ * @discussion Method to enable or disable button and text field to send cash to vending machine
+ */
+-(void)enableSendCash:(BOOL) enable;
 
-
+/*!
+ * @discussion Method to verify what type of buy it is and show the respective HUB
+ */
+-(void) succesfulHUDBuy:(BOOL) isSuccesful;
 @end
 

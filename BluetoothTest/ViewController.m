@@ -31,6 +31,9 @@
     //characteristics = [NSArray arrayWithObjects:[CBUUID UUIDWithString:@"2A31"],[CBUUID UUIDWithString:@"CABE"] , nil];
     
         myCentralManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil options:nil];
+    [self enableSendCash:NO];
+    [self setupSocket];
+    [self runSocket:@"getMoney"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -52,7 +55,12 @@
   ****************/
 
 - (IBAction)show:(id)sender {
-    myCentralManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil options:nil];
+    if (self.peripheral != nil){
+        [self resetAppStatus];
+        [myCentralManager scanForPeripheralsWithServices:services options:nil];
+        
+    }
+    
 }
 
 
@@ -70,18 +78,18 @@
     
     // The hud will disable all input on the view
     HUD = [[MBProgressHUD alloc] initWithView:self.view.window];
-    
     // Add HUD to screen
     
     [self.view addSubview:HUD];
     
     // Register for HUD callbacks so we can remove it from the window at the right time
     
-    HUD.labelText = @"Vending Machine in Progress";
+    HUD.labelText = @"Choose your product";
     
     // Show the HUD while the provided method executes in a new thread
     
     [HUD show:YES];
+    [self.view endEditing:YES];
 }
 
 
@@ -92,13 +100,13 @@
  
  ****************/
 -(void) centralManagerDidUpdateState:(CBCentralManager *)central {
-    testText.text = [NSString stringWithFormat:@"%@", central];
+
     if(central.state == CBCentralManagerStatePoweredOn) {
-        testText.text = [NSString stringWithFormat:@"Buscando Vending Machines"];
+        statusLabel.text = [NSString stringWithFormat:@"Buscando Vending Machines"];
         [myCentralManager scanForPeripheralsWithServices:services options:nil];
     }
     else {
-        testText.text = [NSString stringWithFormat:@"Lo sentimos, el telefono no soporta esta tecnologia."];
+        statusLabel.text = [NSString stringWithFormat:@"Lo sentimos, el telefono no soporta esta tecnologia."];
     }
 }
 
@@ -116,7 +124,8 @@
 
 -(void) centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral {
     NSLog(@"Connected to %@", peripheral.name);
-    
+    statusLabel.text=[NSString stringWithFormat:@"Conectado a %@",peripheral.name ];
+    [statusButton setTitle:@"Cerrar conexion"  forState:UIControlStateNormal];
     [myCentralManager stopScan];
     NSLog(@"Stopped scan");
     peripheral.delegate=self;
@@ -186,8 +195,9 @@
     }
     
     if (self.endSessionCharacteristic.isNotifying){
-//        NSLog(@"Subscribe succesfull!");
-        testText.text = [NSString stringWithFormat:@"Conectado a la Vending 1"];
+        NSLog(@"Subscribe succesfull!");
+        [self enableSendCash:YES];
+
     }
 }
 
@@ -212,19 +222,19 @@
     if (peripheralName == self.peripheral.name ) {
         self.peripheral=[vendingMachines objectForKey:peripheralName];
         [myCentralManager connectPeripheral:self.peripheral options:nil];
+        [statusButton setTitle:[NSString stringWithFormat:@"Desconectar de maquina vending"]  forState:UIControlStateNormal];
         self.peripheral.delegate=self;
-
-
     }
     
     else if (peripheralName != self.peripheral.name && self.peripheral != nil) {
         CBPeripheral *newVending=[vendingMachines objectForKey:peripheralName];
-        [myCentralManager cancelPeripheralConnection:self.peripheral];
+        [self resetAppStatus];
         [myCentralManager connectPeripheral:newVending options:nil];
     }
     
     else if (peripheralName != self.peripheral.name && self.peripheral == nil) {
         CBPeripheral *newVending=[vendingMachines objectForKey:peripheralName];
+        //[statusButton setTitle:[NSString stringWithFormat:@"Conectando a vending"]  forState:UIControlStateNormal];
         [myCentralManager connectPeripheral:newVending options:nil];
     }
     
@@ -234,6 +244,10 @@
     UITableViewCell *cell = [[UITableViewCell alloc]init];
     cell.textLabel.text = [devices objectAtIndex:indexPath.row];
     return cell;
+}
+
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    return @"Vendings Disponibles";
 }
 
 
@@ -261,6 +275,10 @@ withFilterContext:(id)filterContext
     NSString *serverRespone=[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     if ([serverRespone isEqualToString:@"ok"]) {
         NSLog(@"Cargo añadido");
+    }
+    else if ([serverRespone intValue]){
+        NSLog(serverRespone);
+        cashTextLabel.text=[NSString stringWithFormat:@"$%@",serverRespone];
     }
 }
 
@@ -306,10 +324,14 @@ CONVERSION RELATED METHODS
         NSString *moneyInVending=sendCashTextField.text;
         float chargueToPayFloat=([moneyInVending floatValue]-[itemPriceDecimal floatValue]);
         NSString *chargueToPay=[NSString stringWithFormat:@"%.2f",chargueToPayFloat];
-        [self setupSocket];
         [self runSocket:[NSString stringWithFormat:@"%@",chargueToPay]];
         [HUD hide:YES];
+        [self succesfulHUDBuy:YES];
+    }else if (isVendUnsuccesful){
+        [HUD hide:YES];
+        [self succesfulHUDBuy:NO];
     }
+    [self resetAppStatus];
 }
 
 -(NSString *) convertHexToDecimalString:(NSString *) hexString{
@@ -340,6 +362,65 @@ CONVERSION RELATED METHODS
     }
     
     return [NSData dataWithData:commandToSend];
+    
+}
+
+
+/****************
+ 
+RESET RELATED METHODS
+ 
+ ****************/
+-(void) resetAppStatus{
+    [myCentralManager cancelPeripheralConnection:self.peripheral];
+    [self enableSendCash:NO];
+    [self runSocket:@"getMoney"];
+    self.peripheral=nil;
+    self.discoveredCharacteristics=nil;
+    self.discoveredService=nil;
+    self.pricesCharacteristic=nil;
+    self.beginSessionCharacteristic=nil;
+    self.endSessionCharacteristic=nil;
+    self.pricesValue=nil;
+    self.beginSessionValue=nil;
+    self.endSessionValue=nil;
+    [statusButton setTitle:@"Buscar Vending Machine" forState:UIControlStateNormal];
+    statusLabel.text=@"";
+    [self->tableView deselectRowAtIndexPath:[self->tableView indexPathForSelectedRow] animated:YES];
+    
+}
+
+-(void) enableSendCash:(BOOL) enable{
+    if (enable) {
+        sendCashButton.enabled=YES;
+        sendCashTextField.enabled=YES;
+    }else{
+        sendCashButton.enabled=NO;
+        sendCashTextField.enabled=NO;
+    }
+    
+}
+
+-(void) succesfulHUDBuy:(BOOL)isSuccesful{
+    MBProgressHUD *buyHUD=[[MBProgressHUD alloc] initWithView:self.view.window];
+    [self.view addSubview:buyHUD];
+    
+    buyHUD.customView=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
+    buyHUD.mode=MBProgressHUDModeCustomView;
+    buyHUD.delegate=self;
+    //[self resetAppStatus];
+    if (isSuccesful) {
+        buyHUD.labelText=@"Succesful buy!";
+        [buyHUD show:YES];
+        [buyHUD hide:YES afterDelay:3];
+    }else if (!isSuccesful){
+        buyHUD.customView=nil;
+        buyHUD.customView=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-x.png"]];
+        buyHUD.labelText=@"Verify your buy";
+        [buyHUD show:YES];
+        [buyHUD hide:YES afterDelay:3];
+        
+    }
     
 }
 @end

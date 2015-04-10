@@ -17,6 +17,8 @@
 		BBB036931A0C02D9000BB3FD /* BluetoothTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BBB036921A0C02D9000BB3FD /* BluetoothTestTests.m */; };
 		BBCF73BC1A15413700BA07EA /* buyingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BBCF73BB1A15413700BA07EA /* buyingVC.m */; };
 		CE96B9B51AA52C8B003921F8 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = CE96B9B41AA52C8B003921F8 /* Podfile */; };
+		CECCC6391AD75BB30074082D /* 37x-x.png in Resources */ = {isa = PBXBuildFile; fileRef = CECCC6381AD75BB30074082D /* 37x-x.png */; };
+		CECCC63B1AD75BCF0074082D /* 37x-Checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = CECCC63A1AD75BCF0074082D /* 37x-Checkmark.png */; };
 		CEF321521A9BA8DA007119E7 /* loginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF321511A9BA8DA007119E7 /* loginVC.m */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +52,8 @@
 		BBCF73BA1A15413700BA07EA /* buyingVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = buyingVC.h; path = ../buyingVC.h; sourceTree = "<group>"; };
 		BBCF73BB1A15413700BA07EA /* buyingVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = buyingVC.m; path = ../buyingVC.m; sourceTree = "<group>"; };
 		CE96B9B41AA52C8B003921F8 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		CECCC6381AD75BB30074082D /* 37x-x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-x.png"; sourceTree = "<group>"; };
+		CECCC63A1AD75BCF0074082D /* 37x-Checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark.png"; sourceTree = "<group>"; };
 		CEF321501A9BA8DA007119E7 /* loginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = loginVC.h; sourceTree = "<group>"; };
 		CEF321511A9BA8DA007119E7 /* loginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = loginVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -85,6 +89,7 @@
 		BBB0366A1A0C02D8000BB3FD = {
 			isa = PBXGroup;
 			children = (
+				CECCC6351AD755CB0074082D /* Images */,
 				CE96B9B41AA52C8B003921F8 /* Podfile */,
 				BBB036751A0C02D8000BB3FD /* BluetoothTest */,
 				BBB0368F1A0C02D9000BB3FD /* BluetoothTestTests */,
@@ -146,6 +151,15 @@
 				BBB036911A0C02D9000BB3FD /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CECCC6351AD755CB0074082D /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				CECCC63A1AD75BCF0074082D /* 37x-Checkmark.png */,
+				CECCC6381AD75BB30074082D /* 37x-x.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 		ED4907504F05C9975E5A4261 /* Frameworks */ = {
@@ -243,6 +257,8 @@
 			files = (
 				BBB036821A0C02D8000BB3FD /* Main.storyboard in Resources */,
 				CE96B9B51AA52C8B003921F8 /* Podfile in Resources */,
+				CECCC63B1AD75BCF0074082D /* 37x-Checkmark.png in Resources */,
+				CECCC6391AD75BB30074082D /* 37x-x.png in Resources */,
 				BBB036871A0C02D8000BB3FD /* LaunchScreen.xib in Resources */,
 				BBB036841A0C02D8000BB3FD /* Images.xcassets in Resources */,
 			);
