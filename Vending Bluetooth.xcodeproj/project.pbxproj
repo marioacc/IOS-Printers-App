@@ -19,6 +19,16 @@
 		CE96B9B51AA52C8B003921F8 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = CE96B9B41AA52C8B003921F8 /* Podfile */; };
 		CECCC6391AD75BB30074082D /* 37x-x.png in Resources */ = {isa = PBXBuildFile; fileRef = CECCC6381AD75BB30074082D /* 37x-x.png */; };
 		CECCC63B1AD75BCF0074082D /* 37x-Checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = CECCC63A1AD75BCF0074082D /* 37x-Checkmark.png */; };
+		CEE2DB931AE5CE7B00061DEF /* vendingbluetooth-02.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE2DB891AE5CE7B00061DEF /* vendingbluetooth-02.png */; };
+		CEE2DB941AE5CE7B00061DEF /* vending bluetooth-01.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE2DB8A1AE5CE7B00061DEF /* vending bluetooth-01.png */; };
+		CEE2DB951AE5CE7B00061DEF /* verify boton-02.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE2DB8B1AE5CE7B00061DEF /* verify boton-02.png */; };
+		CEE2DB961AE5CE7B00061DEF /* success boton-03.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE2DB8C1AE5CE7B00061DEF /* success boton-03.png */; };
+		CEE2DB971AE5CE7B00061DEF /* loading boton-01.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE2DB8D1AE5CE7B00061DEF /* loading boton-01.png */; };
+		CEE2DB981AE5CE7B00061DEF /* headerparatabla-03.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE2DB8E1AE5CE7B00061DEF /* headerparatabla-03.png */; };
+		CEE2DB991AE5CE7B00061DEF /* boton4-03.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE2DB8F1AE5CE7B00061DEF /* boton4-03.png */; };
+		CEE2DB9A1AE5CE7B00061DEF /* boton2-03.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE2DB901AE5CE7B00061DEF /* boton2-03.png */; };
+		CEE2DB9B1AE5CE7B00061DEF /* boton3-03.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE2DB911AE5CE7B00061DEF /* boton3-03.png */; };
+		CEE2DB9C1AE5CE7B00061DEF /* boton1-03.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE2DB921AE5CE7B00061DEF /* boton1-03.png */; };
 		CEF321521A9BA8DA007119E7 /* loginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF321511A9BA8DA007119E7 /* loginVC.m */; };
 /* End PBXBuildFile section */
 
@@ -36,7 +46,7 @@
 		0657751674940B8359F0549A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F0E8A8CA299C875E8ED3D25 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		93731A08209DE6A2DE54853A /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		BBB036731A0C02D8000BB3FD /* BluetoothTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BluetoothTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BBB036731A0C02D8000BB3FD /* Vending Bluetooth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Vending Bluetooth.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBB036771A0C02D8000BB3FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BBB036781A0C02D8000BB3FD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BBB0367A1A0C02D8000BB3FD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -46,7 +56,7 @@
 		BBB036811A0C02D8000BB3FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BBB036831A0C02D8000BB3FD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		BBB036861A0C02D8000BB3FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		BBB0368C1A0C02D9000BB3FD /* BluetoothTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BluetoothTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BBB0368C1A0C02D9000BB3FD /* Vending BluetoothTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Vending BluetoothTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBB036911A0C02D9000BB3FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BBB036921A0C02D9000BB3FD /* BluetoothTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BluetoothTestTests.m; sourceTree = "<group>"; };
 		BBCF73BA1A15413700BA07EA /* buyingVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = buyingVC.h; path = ../buyingVC.h; sourceTree = "<group>"; };
@@ -54,6 +64,16 @@
 		CE96B9B41AA52C8B003921F8 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		CECCC6381AD75BB30074082D /* 37x-x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-x.png"; sourceTree = "<group>"; };
 		CECCC63A1AD75BCF0074082D /* 37x-Checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark.png"; sourceTree = "<group>"; };
+		CEE2DB891AE5CE7B00061DEF /* vendingbluetooth-02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "vendingbluetooth-02.png"; sourceTree = "<group>"; };
+		CEE2DB8A1AE5CE7B00061DEF /* vending bluetooth-01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "vending bluetooth-01.png"; sourceTree = "<group>"; };
+		CEE2DB8B1AE5CE7B00061DEF /* verify boton-02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "verify boton-02.png"; sourceTree = "<group>"; };
+		CEE2DB8C1AE5CE7B00061DEF /* success boton-03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "success boton-03.png"; sourceTree = "<group>"; };
+		CEE2DB8D1AE5CE7B00061DEF /* loading boton-01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loading boton-01.png"; sourceTree = "<group>"; };
+		CEE2DB8E1AE5CE7B00061DEF /* headerparatabla-03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "headerparatabla-03.png"; sourceTree = "<group>"; };
+		CEE2DB8F1AE5CE7B00061DEF /* boton4-03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "boton4-03.png"; sourceTree = "<group>"; };
+		CEE2DB901AE5CE7B00061DEF /* boton2-03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "boton2-03.png"; sourceTree = "<group>"; };
+		CEE2DB911AE5CE7B00061DEF /* boton3-03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "boton3-03.png"; sourceTree = "<group>"; };
+		CEE2DB921AE5CE7B00061DEF /* boton1-03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "boton1-03.png"; sourceTree = "<group>"; };
 		CEF321501A9BA8DA007119E7 /* loginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = loginVC.h; sourceTree = "<group>"; };
 		CEF321511A9BA8DA007119E7 /* loginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = loginVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -102,8 +122,8 @@
 		BBB036741A0C02D8000BB3FD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BBB036731A0C02D8000BB3FD /* BluetoothTest.app */,
-				BBB0368C1A0C02D9000BB3FD /* BluetoothTestTests.xctest */,
+				BBB036731A0C02D8000BB3FD /* Vending Bluetooth.app */,
+				BBB0368C1A0C02D9000BB3FD /* Vending BluetoothTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -156,6 +176,16 @@
 		CECCC6351AD755CB0074082D /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				CEE2DB891AE5CE7B00061DEF /* vendingbluetooth-02.png */,
+				CEE2DB8A1AE5CE7B00061DEF /* vending bluetooth-01.png */,
+				CEE2DB8B1AE5CE7B00061DEF /* verify boton-02.png */,
+				CEE2DB8C1AE5CE7B00061DEF /* success boton-03.png */,
+				CEE2DB8D1AE5CE7B00061DEF /* loading boton-01.png */,
+				CEE2DB8E1AE5CE7B00061DEF /* headerparatabla-03.png */,
+				CEE2DB8F1AE5CE7B00061DEF /* boton4-03.png */,
+				CEE2DB901AE5CE7B00061DEF /* boton2-03.png */,
+				CEE2DB911AE5CE7B00061DEF /* boton3-03.png */,
+				CEE2DB921AE5CE7B00061DEF /* boton1-03.png */,
 				CECCC63A1AD75BCF0074082D /* 37x-Checkmark.png */,
 				CECCC6381AD75BB30074082D /* 37x-x.png */,
 			);
@@ -173,9 +203,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		BBB036721A0C02D8000BB3FD /* BluetoothTest */ = {
+		BBB036721A0C02D8000BB3FD /* Vending Bluetooth */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BBB036961A0C02D9000BB3FD /* Build configuration list for PBXNativeTarget "BluetoothTest" */;
+			buildConfigurationList = BBB036961A0C02D9000BB3FD /* Build configuration list for PBXNativeTarget "Vending Bluetooth" */;
 			buildPhases = (
 				B8215D0B8454288D916A6CF6 /* Check Pods Manifest.lock */,
 				BBB0366F1A0C02D8000BB3FD /* Sources */,
@@ -187,14 +217,14 @@
 			);
 			dependencies = (
 			);
-			name = BluetoothTest;
+			name = "Vending Bluetooth";
 			productName = BluetoothTest;
-			productReference = BBB036731A0C02D8000BB3FD /* BluetoothTest.app */;
+			productReference = BBB036731A0C02D8000BB3FD /* Vending Bluetooth.app */;
 			productType = "com.apple.product-type.application";
 		};
-		BBB0368B1A0C02D9000BB3FD /* BluetoothTestTests */ = {
+		BBB0368B1A0C02D9000BB3FD /* Vending BluetoothTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BBB036991A0C02D9000BB3FD /* Build configuration list for PBXNativeTarget "BluetoothTestTests" */;
+			buildConfigurationList = BBB036991A0C02D9000BB3FD /* Build configuration list for PBXNativeTarget "Vending BluetoothTests" */;
 			buildPhases = (
 				BBB036881A0C02D9000BB3FD /* Sources */,
 				BBB036891A0C02D9000BB3FD /* Frameworks */,
@@ -205,9 +235,9 @@
 			dependencies = (
 				BBB0368E1A0C02D9000BB3FD /* PBXTargetDependency */,
 			);
-			name = BluetoothTestTests;
+			name = "Vending BluetoothTests";
 			productName = BluetoothTestTests;
-			productReference = BBB0368C1A0C02D9000BB3FD /* BluetoothTestTests.xctest */;
+			productReference = BBB0368C1A0C02D9000BB3FD /* Vending BluetoothTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -230,7 +260,7 @@
 					};
 				};
 			};
-			buildConfigurationList = BBB0366E1A0C02D8000BB3FD /* Build configuration list for PBXProject "BluetoothTest" */;
+			buildConfigurationList = BBB0366E1A0C02D8000BB3FD /* Build configuration list for PBXProject "Vending Bluetooth" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -244,8 +274,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BBB036721A0C02D8000BB3FD /* BluetoothTest */,
-				BBB0368B1A0C02D9000BB3FD /* BluetoothTestTests */,
+				BBB036721A0C02D8000BB3FD /* Vending Bluetooth */,
+				BBB0368B1A0C02D9000BB3FD /* Vending BluetoothTests */,
 			);
 		};
 /* End PBXProject section */
@@ -256,10 +286,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				BBB036821A0C02D8000BB3FD /* Main.storyboard in Resources */,
+				CEE2DB971AE5CE7B00061DEF /* loading boton-01.png in Resources */,
+				CEE2DB931AE5CE7B00061DEF /* vendingbluetooth-02.png in Resources */,
+				CEE2DB9C1AE5CE7B00061DEF /* boton1-03.png in Resources */,
+				CEE2DB951AE5CE7B00061DEF /* verify boton-02.png in Resources */,
+				CEE2DB991AE5CE7B00061DEF /* boton4-03.png in Resources */,
+				CEE2DB941AE5CE7B00061DEF /* vending bluetooth-01.png in Resources */,
+				CEE2DB961AE5CE7B00061DEF /* success boton-03.png in Resources */,
 				CE96B9B51AA52C8B003921F8 /* Podfile in Resources */,
+				CEE2DB9A1AE5CE7B00061DEF /* boton2-03.png in Resources */,
 				CECCC63B1AD75BCF0074082D /* 37x-Checkmark.png in Resources */,
+				CEE2DB9B1AE5CE7B00061DEF /* boton3-03.png in Resources */,
 				CECCC6391AD75BB30074082D /* 37x-x.png in Resources */,
 				BBB036871A0C02D8000BB3FD /* LaunchScreen.xib in Resources */,
+				CEE2DB981AE5CE7B00061DEF /* headerparatabla-03.png in Resources */,
 				BBB036841A0C02D8000BB3FD /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -332,7 +372,7 @@
 /* Begin PBXTargetDependency section */
 		BBB0368E1A0C02D9000BB3FD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = BBB036721A0C02D8000BB3FD /* BluetoothTest */;
+			target = BBB036721A0C02D8000BB3FD /* Vending Bluetooth */;
 			targetProxy = BBB0368D1A0C02D9000BB3FD /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -447,7 +487,7 @@
 				INFOPLIST_FILE = BluetoothTest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Vending Bluetooth";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -464,7 +504,7 @@
 				INFOPLIST_FILE = BluetoothTest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Vending Bluetooth";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -486,7 +526,7 @@
 				);
 				INFOPLIST_FILE = BluetoothTestTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Vending BluetoothTests";
 				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BluetoothTest.app/BluetoothTest";
 			};
@@ -504,7 +544,7 @@
 				);
 				INFOPLIST_FILE = BluetoothTestTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Vending BluetoothTests";
 				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BluetoothTest.app/BluetoothTest";
 			};
@@ -513,7 +553,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		BBB0366E1A0C02D8000BB3FD /* Build configuration list for PBXProject "BluetoothTest" */ = {
+		BBB0366E1A0C02D8000BB3FD /* Build configuration list for PBXProject "Vending Bluetooth" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BBB036941A0C02D9000BB3FD /* Debug */,
@@ -522,7 +562,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BBB036961A0C02D9000BB3FD /* Build configuration list for PBXNativeTarget "BluetoothTest" */ = {
+		BBB036961A0C02D9000BB3FD /* Build configuration list for PBXNativeTarget "Vending Bluetooth" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BBB036971A0C02D9000BB3FD /* Debug */,
@@ -531,7 +571,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BBB036991A0C02D9000BB3FD /* Build configuration list for PBXNativeTarget "BluetoothTestTests" */ = {
+		BBB036991A0C02D9000BB3FD /* Build configuration list for PBXNativeTarget "Vending BluetoothTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BBB0369A1A0C02D9000BB3FD /* Debug */,

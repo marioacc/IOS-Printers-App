@@ -34,6 +34,12 @@
     [self enableSendCash:NO];
     [self setupSocket];
     [self runSocket:@"getMoney"];
+    [self waitingHUD:@"Searching Vendings"];
+    
+    cashTextLabel.layer.masksToBounds = YES;
+    totalCashLabel.layer.masksToBounds=YES;
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -45,7 +51,6 @@
 {
     [self.view endEditing:YES];
 }
-
 
 
 /****************
@@ -65,6 +70,7 @@
 
 
 - (IBAction)sendCash:(id)sender {
+    //moneyInVending=[sendCashTextField.text doubleValue];
     NSString *moneyString=[NSString stringWithFormat:@"%.2f",([sendCashTextField.text doubleValue]*100)];
     moneyString=[self convertDecimalToHexString:moneyString];
     while([moneyString length] < 4){
@@ -77,18 +83,18 @@
     [self.peripheral writeValue:data forCharacteristic:self.beginSessionCharacteristic type:CBCharacteristicWriteWithResponse];
     
     // The hud will disable all input on the view
-    HUD = [[MBProgressHUD alloc] initWithView:self.view.window];
+    
     // Add HUD to screen
     
-    [self.view addSubview:HUD];
+    
     
     // Register for HUD callbacks so we can remove it from the window at the right time
     
-    HUD.labelText = @"Choose your product";
+    waitingHUD.labelText = @"Choose your product";
     
     // Show the HUD while the provided method executes in a new thread
     
-    [HUD show:YES];
+    [waitingHUD show:YES];
     [self.view endEditing:YES];
 }
 
@@ -102,11 +108,16 @@
 -(void) centralManagerDidUpdateState:(CBCentralManager *)central {
 
     if(central.state == CBCentralManagerStatePoweredOn) {
-        statusLabel.text = [NSString stringWithFormat:@"Buscando Vending Machines"];
+        waitingHUD = [[MBProgressHUD alloc] initWithView:self.view.window];
+        [self.view addSubview:waitingHUD];
+//        waitingHUD.customView=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"loading boton-01.png"]];
+//        waitingHUD.mode=MBProgressHUDModeAnnularDeterminate;
+        //[self waitingHUD:@"Searching vending machine"];
+        //statusLabel.text = [NSString stringWithFormat:@"Searching vending machine"];
         [myCentralManager scanForPeripheralsWithServices:services options:nil];
     }
     else {
-        statusLabel.text = [NSString stringWithFormat:@"Lo sentimos, el telefono no soporta esta tecnologia."];
+        statusLabel.text = [NSString stringWithFormat:@"Sorry, your smarthphone does not support this technology."];
     }
 }
 
@@ -124,13 +135,12 @@
 
 -(void) centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral {
     NSLog(@"Connected to %@", peripheral.name);
-    statusLabel.text=[NSString stringWithFormat:@"Conectado a %@",peripheral.name ];
-    [statusButton setTitle:@"Cerrar conexion"  forState:UIControlStateNormal];
     [myCentralManager stopScan];
     NSLog(@"Stopped scan");
     peripheral.delegate=self;
     self.peripheral=peripheral;
     [peripheral discoverServices:services];
+    
 }
 
 - (void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error {
@@ -161,9 +171,10 @@
     NSString *value = [NSString stringWithFormat:@"%@", characteristic.value];
     value = [value stringByReplacingOccurrencesOfString:@"<" withString:@""];
     value = [value stringByReplacingOccurrencesOfString:@">" withString:@""];
+    value = [value stringByReplacingOccurrencesOfString:@" " withString:@""];
     if ([characteristic isEqual:self.endSessionCharacteristic]) {
         if (self.endSessionValue) {
-            [self  verifyBuy:[value substringToIndex:8]];
+            [self  verifyBuy:[[value substringFromIndex:8] substringToIndex:8]];
         }
         else{
             self.endSessionValue=value;
@@ -197,7 +208,9 @@
     if (self.endSessionCharacteristic.isNotifying){
         NSLog(@"Subscribe succesfull!");
         [self enableSendCash:YES];
-
+        statusLabel.text=[NSString stringWithFormat:@"Connected to %@",peripheral.name ];
+        [statusButton setTitle:@"Close conection"  forState:UIControlStateNormal];
+        [waitingHUD hide:YES];
     }
 }
 
@@ -222,20 +235,23 @@
     if (peripheralName == self.peripheral.name ) {
         self.peripheral=[vendingMachines objectForKey:peripheralName];
         [myCentralManager connectPeripheral:self.peripheral options:nil];
-        [statusButton setTitle:[NSString stringWithFormat:@"Desconectar de maquina vending"]  forState:UIControlStateNormal];
+        [statusButton setTitle:[NSString stringWithFormat:@"Desconect from vending machine"]  forState:UIControlStateNormal];
         self.peripheral.delegate=self;
+        [self waitingHUD:@"Connecting to Vending Machine"];
     }
     
     else if (peripheralName != self.peripheral.name && self.peripheral != nil) {
         CBPeripheral *newVending=[vendingMachines objectForKey:peripheralName];
         [self resetAppStatus];
         [myCentralManager connectPeripheral:newVending options:nil];
+        [self waitingHUD:@"Connecting to Vending Machine"];
     }
     
     else if (peripheralName != self.peripheral.name && self.peripheral == nil) {
         CBPeripheral *newVending=[vendingMachines objectForKey:peripheralName];
         //[statusButton setTitle:[NSString stringWithFormat:@"Conectando a vending"]  forState:UIControlStateNormal];
         [myCentralManager connectPeripheral:newVending options:nil];
+        [self waitingHUD:@"Connecting to Vending Machine"];
     }
     
 }
@@ -247,10 +263,21 @@
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    return @"Vendings Disponibles";
+    return @"Vendings available";
 }
 
+//- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+//{
+//    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 30)] ;
+//    [headerView setBackgroundColor:[UIColor colorWithRed:53.0 green:93.0 blue:133.0 alpha:1]];
+//    return headerView;
+//}
 
+-(void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
+    UITableViewHeaderFooterView * headerview = (UITableViewHeaderFooterView *)view;
+    headerview.contentView.backgroundColor = self->totalCashLabel.backgroundColor ;
+    headerview.textLabel.textColor = [UIColor whiteColor];
+}
 
 /****************
  
@@ -314,21 +341,21 @@ CONVERSION RELATED METHODS
  ****************/
 
 -(void) verifyBuy: (NSString *) endSessionString{
-    NSString *itemPriceHex=[endSessionString substringToIndex:4];
+    NSString *itemPriceHex=[endSessionString  substringToIndex:4];
     //NSString *vendItem=[endSessionString substringFromIndex:4];
     BOOL isVendUnsuccesful=[itemPriceHex isEqualToString:@"0000"];
     //BOOL isItemUnknown=[[endSessionString substringFromIndex:4] isEqualToString:@"ffff"];
     if (!isVendUnsuccesful) {
         float itemPriceDecimalUnstructured=[[self convertHexToDecimalString:itemPriceHex] floatValue]/100;
         NSString *itemPriceDecimal=[NSString stringWithFormat:@" %.2f",itemPriceDecimalUnstructured];
-        NSString *moneyInVending=sendCashTextField.text;
-        float chargueToPayFloat=([moneyInVending floatValue]-[itemPriceDecimal floatValue]);
-        NSString *chargueToPay=[NSString stringWithFormat:@"%.2f",chargueToPayFloat];
-        [self runSocket:[NSString stringWithFormat:@"%@",chargueToPay]];
-        [HUD hide:YES];
+//        NSString *moneyInVending=sendCashTextField.text;
+//        float chargueToPayFloat=([moneyInVending floatValue]-[itemPriceDecimal floatValue]);
+//        NSString *chargueToPay=[NSString stringWithFormat:@"%.2f",itemPriceDecimal];
+        [self runSocket:[NSString stringWithFormat:@"%@",itemPriceDecimal]];
+        [waitingHUD hide:YES];
         [self succesfulHUDBuy:YES];
     }else if (isVendUnsuccesful){
-        [HUD hide:YES];
+        [waitingHUD hide:YES];
         [self succesfulHUDBuy:NO];
     }
     [self resetAppStatus];
@@ -384,9 +411,10 @@ RESET RELATED METHODS
     self.pricesValue=nil;
     self.beginSessionValue=nil;
     self.endSessionValue=nil;
-    [statusButton setTitle:@"Buscar Vending Machine" forState:UIControlStateNormal];
+    [statusButton setTitle:@"Search vending machine" forState:UIControlStateNormal];
     statusLabel.text=@"";
     [self->tableView deselectRowAtIndexPath:[self->tableView indexPathForSelectedRow] animated:YES];
+    
     
 }
 
@@ -405,7 +433,7 @@ RESET RELATED METHODS
     MBProgressHUD *buyHUD=[[MBProgressHUD alloc] initWithView:self.view.window];
     [self.view addSubview:buyHUD];
     
-    buyHUD.customView=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
+    buyHUD.customView=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"success boton-03.png"]];
     buyHUD.mode=MBProgressHUDModeCustomView;
     buyHUD.delegate=self;
     //[self resetAppStatus];
@@ -415,7 +443,7 @@ RESET RELATED METHODS
         [buyHUD hide:YES afterDelay:3];
     }else if (!isSuccesful){
         buyHUD.customView=nil;
-        buyHUD.customView=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-x.png"]];
+        buyHUD.customView=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"verify boton-02.png"]];
         buyHUD.labelText=@"Verify your buy";
         [buyHUD show:YES];
         [buyHUD hide:YES afterDelay:3];
@@ -423,4 +451,19 @@ RESET RELATED METHODS
     }
     
 }
+
+-(void) waitingHUD:(NSString *) string{
+
+    
+    // Register for HUD callbacks so we can remove it from the window at the right time
+    
+    waitingHUD.labelText = string;
+    
+    // Show the HUD while the provided method executes in a new thread
+    
+    [waitingHUD show:YES];
+    [self.view endEditing:YES];
+}
+
+
 @end

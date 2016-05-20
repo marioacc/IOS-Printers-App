@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BBB036721A0C02D8000BB3FD"
-               BuildableName = "BluetoothTest.app"
-               BlueprintName = "BluetoothTest"
-               ReferencedContainer = "container:BluetoothTest.xcodeproj">
+               BuildableName = "Vending Bluetooth.app"
+               BlueprintName = "Vending Bluetooth"
+               ReferencedContainer = "container:Vending Bluetooth.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BBB0368B1A0C02D9000BB3FD"
-               BuildableName = "BluetoothTestTests.xctest"
-               BlueprintName = "BluetoothTestTests"
-               ReferencedContainer = "container:BluetoothTest.xcodeproj">
+               BuildableName = "Vending BluetoothTests.xctest"
+               BlueprintName = "Vending BluetoothTests"
+               ReferencedContainer = "container:Vending Bluetooth.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BBB0368B1A0C02D9000BB3FD"
-               BuildableName = "BluetoothTestTests.xctest"
-               BlueprintName = "BluetoothTestTests"
-               ReferencedContainer = "container:BluetoothTest.xcodeproj">
+               BuildableName = "Vending BluetoothTests.xctest"
+               BlueprintName = "Vending BluetoothTests"
+               ReferencedContainer = "container:Vending Bluetooth.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BBB036721A0C02D8000BB3FD"
-            BuildableName = "BluetoothTest.app"
-            BlueprintName = "BluetoothTest"
-            ReferencedContainer = "container:BluetoothTest.xcodeproj">
+            BuildableName = "Vending Bluetooth.app"
+            BlueprintName = "Vending Bluetooth"
+            ReferencedContainer = "container:Vending Bluetooth.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -77,9 +77,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BBB036721A0C02D8000BB3FD"
-            BuildableName = "BluetoothTest.app"
-            BlueprintName = "BluetoothTest"
-            ReferencedContainer = "container:BluetoothTest.xcodeproj">
+            BuildableName = "Vending Bluetooth.app"
+            BlueprintName = "Vending Bluetooth"
+            ReferencedContainer = "container:Vending Bluetooth.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -96,9 +96,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BBB036721A0C02D8000BB3FD"
-            BuildableName = "BluetoothTest.app"
-            BlueprintName = "BluetoothTest"
-            ReferencedContainer = "container:BluetoothTest.xcodeproj">
+            BuildableName = "Vending Bluetooth.app"
+            BlueprintName = "Vending Bluetooth"
+            ReferencedContainer = "container:Vending Bluetooth.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

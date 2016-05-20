@@ -26,10 +26,14 @@
     NSArray *characteristics;
     NSMutableDictionary *vendingMachines;
     __weak IBOutlet UITextField *sendCashTextField;
+    __weak IBOutlet UILabel *totalCashLabel;
     __weak IBOutlet UILabel *cashTextLabel;
     MBProgressHUD *HUD;
+    MBProgressHUD *waitingHUD;
     GCDAsyncUdpSocket *udpSocket ;
     __weak IBOutlet UIButton *statusButton;
+//    double moneyInVending;
+    
 
 }
 
